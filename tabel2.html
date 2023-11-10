@@ -124,7 +124,7 @@
 </head>
 <body>
     <h1>Praktikum Week 9</h1>
-    <label for="text-field">URL Link:</label><br>
+    <label for="text-field" autocomplete="off">URL Link:</label><br>
     <input type="text" id="text-field" name="URL" placeholder="Masukkan URL Link"><br>
     <h4> </h4>
     <button onclick="fetchData()">Submit</button><br>
@@ -140,17 +140,17 @@
     </div>
     <form id="newForm">
         <label for="id">ID:</label>
-        <input type="text" id="id" name="id" required><br>
+        <input type="text" id="id" name="id" autocomplete="off" required><br>
         <label for="F_Name">First Name:</label>
-        <input type="text" id="F_Name" name="F_Name" required><br>
+        <input type="text" id="F_Name" name="F_Name" autocomplete="username" required><br>
         <label for="L_Name">Last Name:</label>
-        <input type="text" id="L_Name" name="L_Name" required><br>
+        <input type="text" id="L_Name" name="L_Name" autocomplete="username" required><br>
         <label for="email">Email:</label>
-        <input type="text" id="email" name="email" required><br>
+        <input type="text" id="email" name="email" autocomplete="email" required><br>
         <label for="email2">Email 2:</label>
-        <input type="text" id="email2" name="email2" required><br>
+        <input type="text" id="email2" name="email2" autocomplete="email" required><br>
         <label for="profesi">Profesi:</label>
-        <input type="text" id="profesi" name="profesi" required><br>
+        <input type="text" id="profesi" name="profesi" autocomplete="off" required><br>
         <input type="button" value="Save" onclick="callPhpScript()">
     </form>
     <table id="data-table"></table>
