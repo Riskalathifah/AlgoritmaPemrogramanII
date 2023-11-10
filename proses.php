@@ -9,9 +9,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $file = 'datapribadi.csv';
     $data = "$id, $F_Name, $L_Name, $email, $email2, $profesi\n";
-    file_put_contents($file, $data, FILE_APPEND | LOCK_EX);
-    echo "Data berhasil diterima";
-} else {
-    echo "Metode permintaan tidak valid";
+    if (file_put_contents($file, $data, FILE_APPEND | LOCK_EX)) {
+        echo 'Data berhasil disimpan.';
+    } else {
+        echo 'Gagal menyimpan data ke file.';
+    }
 }
 ?>
