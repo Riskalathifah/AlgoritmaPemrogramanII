@@ -136,7 +136,7 @@
 
     th {
     border: 2px solid #825B8C;
-    background-color: #5B3E5D; /* Even Darker Purple */
+    background-color: #5B3E5D; 
     }
     </style>
 </head>
@@ -147,15 +147,6 @@
     <button onclick="fetchData()">Submit</button>
     <div id="table-container">
       <div class="table-controls">
-        <div class="table-controls-left">
-          <span>Tampilkan</span>
-          <select id="entries-select" onchange="entriesPerPage = this.value; currentPage = 1; displayTableData(); updatePagination();">
-            <option value="10">10</option>
-            <option value="25">25</option>
-            <option value="50">50</option>
-          </select>
-          <span>entri</span>
-        </div>
         <div class="table-controls-right">
           <span>Cari: </span>
           <input type="text" id="search-input" onkeyup="searchTable()" />
@@ -167,27 +158,27 @@
         <h4>Isi data dirimu!!</h4>
         <div class="id">
             <span>Id: </span>
-            <input type="text" id="ids"/>
+            <input type="text" id="id"/>
         </div>
-        <div class="fname">
+        <div class="F_Name">
             <span>F_Name: </span>
-            <input type="text" id="namaDepan"/>
+            <input type="text" id="F_Name"/>
         </div>
-        <div class="lname">
+        <div class="L_Name">
             <span>L_Name: </span>
-            <input type="text" id="namaBelakang"/>
+            <input type="text" id="L_Name"/>
         </div>
         <div class="email">
-            <span>Email: </span>
-            <input type="text" id="mail"/>
+            <span>email: </span>
+            <input type="text" id="email"/>
         </div>
         <div class="email2">
-            <span>Email 2: </span>
-            <input type="text" id="mail2"/>
+            <span>email 2: </span>
+            <input type="text" id="email2"/>
         </div>
         <div class="profesi">
-            <span>Profesi: </span>
-            <input type="text" id="job"/>
+            <span>profesi: </span>
+            <input type="text" id="profesi"/>
         </div>
         <button onclick="callPhpScript()">Input Data</button>
     </div>    
@@ -235,7 +226,7 @@
           xhr.send();
         }
     let currentPage = 1;
-    const entriesPerPage = 25; 
+    const entriesPerPage = 10; 
 
     function displayTableData() {
         const startIndex = (currentPage - 1) * entriesPerPage;
@@ -318,12 +309,12 @@
         updatePagination();
     }
     function callPhpScript() {
-        const id = document.getElementById('ids').value;
-        const F_name = document.getElementById('namaDepan').value;
-        const L_name = document.getElementById('namaBelakang').value;
-        const email = document.getElementById('mail').value;
-        const email2 = document.getElementById('mail2').value;
-        const profesi = document.getElementById('job').value;
+        const id = document.getElementById('id').value;
+        const F_Name = document.getElementById('F_Name').value;
+        const L_Name = document.getElementById('L_Name').value;
+        const email = document.getElementById('email').value;
+        const email2 = document.getElementById('email2').value;
+        const profesi = document.getElementById('profesi').value;
             
         const xhr = new XMLHttpRequest();
         xhr.open('POST', 'proses.php', true);
@@ -336,12 +327,12 @@
             }
         };
         const data = new data2();
-        data.append('id', ids);
-        data.append('F_name', namaDepan);
-        data.append('L_name', namaBelakang);
-        data.append('email', mail);
-        data.append('email2', mail2);
-        data.append('profesi', job);
+        data.append('id', id);
+        data.append('F_Name', F_Name);
+        data.append('L_Name', L_Name);
+        data.append('email', email);
+        data.append('email2', email2);
+        data.append('profesi', profesi);
         xhr.send(data);
     }
     </script>
