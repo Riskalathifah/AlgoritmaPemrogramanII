@@ -1,11 +1,11 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id = $_POST['ids'];
-    $F_Name = $_POST['namaDepan'];
-    $L_Name = $_POST['namaBelakang'];
-    $email = $_POST['mail'];
-    $email2 = $_POST['mail2'];
-    $profesi = $_POST['job'];
+    $id = $_POST['id'];
+    $F_Name = $_POST['F_Name'];
+    $L_Name = $_POST['L_Name'];
+    $email = $_POST['email'];
+    $email2 = $_POST['email2'];
+    $profesi = $_POST['profesi'];
 
     $file = 'datapribadi.csv';
     $data = "$id, $F_Name, $L_Name, $email, $email2, $profesi\n";
