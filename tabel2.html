@@ -196,116 +196,116 @@
           xhr.open('GET', urlInput, true);
           xhr.send();
         }
-    let currentPage = 1;
-    const entriesPerPage = 10; 
+        let currentPage = 1;
+        const entriesPerPage = 10; 
 
-    function displayTableData() {
-        const startIndex = (currentPage - 1) * entriesPerPage;
-        const endIndex = startIndex + entriesPerPage;
-        const dataTable = document.getElementById('data-table');
-        const data = Array.from(dataTable.getElementsByTagName('tr'));
+        function displayTableData() {
+            const startIndex = (currentPage - 1) * entriesPerPage;
+            const endIndex = startIndex + entriesPerPage;
+            const dataTable = document.getElementById('data-table');
+            const data = Array.from(dataTable.getElementsByTagName('tr'));
 
-        data.forEach(row => {
-        row.style.display = 'none';
-        });
-
-    for (let i = startIndex; i < endIndex && i < data.length; i++) {
-      data[i].style.display = '';
-        }
-    }
-
-    function updatePagination() {
-        const dataTable = document.getElementById('data-table');
-        const totalEntries = dataTable.getElementsByTagName('tr').length - 1; // Kurangi satu untuk header
-
-        const totalPages = Math.ceil(totalEntries / entriesPerPage);
-        const paginationInfo = `Menampilkan ${currentPage} - ${Math.min(currentPage + entriesPerPage - 1, totalEntries)} dari ${totalEntries} entri`;
-
-        document.getElementById('pagination-info').textContent = paginationInfo;
-        document.getElementById('pagination-prev').disabled = currentPage === 1;
-        document.getElementById('pagination-next').disabled = currentPage === totalPages;
-    }
-
-    function sortTable(columnIndex) {
-      const dataTable = document.getElementById('data-table');
-      const rows = Array.from(dataTable.getElementsByTagName('tr'));
-
-      rows.shift(); // Remove header
-
-      rows.sort((a, b) => {
-        const valueA = a.getElementsByTagName('td')[columnIndex].textContent;
-        const valueB = b.getElementsByTagName('td')[columnIndex].textContent;
-
-        return valueA.localeCompare(valueB);
-      });
-
-      dataTable.innerHTML = '';
-      rows.forEach(row => {
-        dataTable.appendChild(row);
-      });
-
-      displayTableData();
-      updatePagination();
-    }
-
-
-    function searchTable() {
-        const searchInput = document.getElementById('search-input').value.toLowerCase();
-        const dataTable = document.getElementById('data-table');
-        const rows = Array.from(dataTable.getElementsByTagName('tr'));
-
-        rows.shift(); // Hapus header
-
-        rows.forEach(row => {
-        const cells = row.getElementsByTagName('td');
-        const rowText = Array.from(cells).map(cell => cell.textContent).join(' ').toLowerCase();
-        if (rowText.includes(searchInput)) {
-            row.style.display = '';
-        } else {
+            data.forEach(row => {
             row.style.display = 'none';
-        }
-        });
-    }
+            });
 
-    function changePage(offset) {
-        currentPage += offset;
-        if (currentPage < 1) {
-        currentPage = 1;
-        }
-        displayTableData();
-        updatePagination();
-    }
-    window.onload = () => {
-        displayTableData();
-        updatePagination();
-    }
-    function callPhpScript() {
-        const id = document.getElementById('id').value;
-        const F_Name = document.getElementById('F_Name').value;
-        const L_Name = document.getElementById('L_Name').value;
-        const email = document.getElementById('email').value;
-        const email2 = document.getElementById('email2').value;
-        const profesi = document.getElementById('profesi').value;
-            
-        const xhr = new XMLHttpRequest();
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                alert('Success');
-            } else {
-                alert('Terjadi kesalahan saat mengirim data.');
+        for (let i = startIndex; i < endIndex && i < data.length; i++) {
+          data[i].style.display = '';
             }
-        };
-        const data = new FormData();
-        data.append('id', id);
-        data.append('F_Name', F_Name);
-        data.append('L_Name', L_Name);
-        data.append('email', email);
-        data.append('email2', email2);
-        data.append('profesi', profesi);
-        
-        xhr.open('POST', 'proses.php', true);
-        xhr.send(data);
-    }
+        }
+
+        function updatePagination() {
+            const dataTable = document.getElementById('data-table');
+            const totalEntries = dataTable.getElementsByTagName('tr').length - 1; // Kurangi satu untuk header
+    
+            const totalPages = Math.ceil(totalEntries / entriesPerPage);
+            const paginationInfo = `Menampilkan ${currentPage} - ${Math.min(currentPage + entriesPerPage - 1, totalEntries)} dari ${totalEntries} entri`;
+    
+            document.getElementById('pagination-info').textContent = paginationInfo;
+            document.getElementById('pagination-prev').disabled = currentPage === 1;
+            document.getElementById('pagination-next').disabled = currentPage === totalPages;
+        }
+
+        function sortTable(columnIndex) {
+          const dataTable = document.getElementById('data-table');
+          const rows = Array.from(dataTable.getElementsByTagName('tr'));
+    
+          rows.shift(); // Remove header
+    
+          rows.sort((a, b) => {
+            const valueA = a.getElementsByTagName('td')[columnIndex].textContent;
+            const valueB = b.getElementsByTagName('td')[columnIndex].textContent;
+    
+            return valueA.localeCompare(valueB);
+          });
+    
+          dataTable.innerHTML = '';
+          rows.forEach(row => {
+            dataTable.appendChild(row);
+          });
+    
+          displayTableData();
+          updatePagination();
+        }
+
+
+        function searchTable() {
+            const searchInput = document.getElementById('search-input').value.toLowerCase();
+            const dataTable = document.getElementById('data-table');
+            const rows = Array.from(dataTable.getElementsByTagName('tr'));
+    
+            rows.shift(); // Hapus header
+    
+            rows.forEach(row => {
+            const cells = row.getElementsByTagName('td');
+            const rowText = Array.from(cells).map(cell => cell.textContent).join(' ').toLowerCase();
+            if (rowText.includes(searchInput)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+            });
+        }
+
+        function changePage(offset) {
+            currentPage += offset;
+            if (currentPage < 1) {
+            currentPage = 1;
+            }
+            displayTableData();
+            updatePagination();
+        }
+        window.onload = () => {
+            displayTableData();
+            updatePagination();
+        }
+        function callPhpScript() {
+            const id = document.getElementById('id').value;
+            const F_Name = document.getElementById('F_Name').value;
+            const L_Name = document.getElementById('L_Name').value;
+            const email = document.getElementById('email').value;
+            const email2 = document.getElementById('email2').value;
+            const profesi = document.getElementById('profesi').value;
+                
+            const xhr = new XMLHttpRequest();
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    alert('Success');
+                } else {
+                    alert('Terjadi kesalahan saat mengirim data.');
+                }
+            };
+            const formData = new FormData();
+            formData.append('id', id);
+            formData.append('F_Name', F_Name);
+            formData.append('L_Name', L_Name);
+            formData.append('email', email);
+            formData.append('email2', email2);
+            formData.append('profesi', profesi);
+            
+            xhr.open('POST', 'proses.php', true);
+            xhr.send(formData);
+        }
     </script>
 </body>
 </html>
