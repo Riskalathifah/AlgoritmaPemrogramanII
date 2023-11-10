@@ -319,8 +319,6 @@
         const profesi = document.getElementById('profesi').value;
             
         const xhr = new XMLHttpRequest();
-        xhr.open('POST', 'proses.php', true);
-            
         xhr.onload = function() {
             if (xhr.status === 200) {
                 alert('Success');
@@ -335,6 +333,8 @@
         data.append('email', email);
         data.append('email2', email2);
         data.append('profesi', profesi);
+        
+        xhr.open('POST', 'proses.php', true);
         xhr.send(data);
     }
     </script>
