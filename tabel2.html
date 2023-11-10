@@ -50,60 +50,42 @@
     background-color: #5B3E5D; 
     }
 
-    #add-form {
-    background-color: #C9B5DD; 
-    border-radius: 20px;
+    #myForm {
+    font-family: 'Montserrat', sans-serif;
+    max-width: 400px;
+    margin: 0 auto;
     padding: 20px;
-    margin: 20px;
+    background-color: #C9B5DD;
+    border-radius: 12px;
     }
 
-    #add-form .id,
-    #add-form .fname,
-    #add-form .lname,
-    #add-form .email,
-    #add-form .email2,
-    #add-form .profesi {
-        margin: 10px 0;
+    label {
+    display: block;
+    margin-bottom: 8px;
+    color: #825B8C;
     }
 
-    #add-form span {
-        font-weight: bold;
-        color: #825B8C; 
-        display: inline-block;
-        width: 120px;
+    input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #825B8C;
+    border-radius: 8px;
+    box-sizing: border-box;
     }
 
-    #add-form input[type="text"] {
-        width: 80%;
-        padding: 10px;
-        border: 3px solid #825B8C;
-        border-radius: 12px;
-        background-color: #E3D6ED; 
-        color: #825B8C;
-        font-family: Montserrat, sans-serif;
-        font-size: 16px;
+    input[type="button"] {
+    background-color: #5B3E5D;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 12px;
     }
 
-    #add-form button {
-        background-color: #825B8C; 
-        color: #fff;
-        border: none;
-        border-radius: 12px;
-        padding: 12px 24px;
-        cursor: pointer;
-        font-family: Montserrat, sans-serif;
-        font-weight: bold;
-        margin-top: 10px;
-    }
-
-    #add-form button:hover {
-        background-color: #5B3E5D; 
-    }
-    #add-form h4{
-        text-align: center;
-        font-weight: 800;
-        font-size: 20px;
-        color: #825B8C;
+    input[type="button"]:hover {
+    background-color: #825B8C;
     }
         
     #table-container .table-controls-right button {
@@ -156,36 +138,21 @@
         </div>
       </div>
     <div/>
-    <div id="add-form">
-        <h4>Isi data dirimu!!</h4>
-        <form id="myForm">
-            <div class="id">
-                <span>Id: </span>
-                <input type="text" id="id"/>
-            </div>
-            <div class="F_Name">
-                <span>F_Name: </span>
-                <input type="text" id="F_Name"/>
-            </div>
-            <div class="L_Name">
-                <span>L_Name: </span>
-                <input type="text" id="L_Name"/>
-            </div>
-            <div class="email">
-                <span>email: </span>
-                <input type="text" id="email"/>
-            </div>
-            <div class="email2">
-                <span>email 2: </span>
-                <input type="text" id="email2"/>
-            </div>
-            <div class="profesi">
-                <span>profesi: </span>
-                <input type="text" id="profesi"/>
-            </div>
-            <button onclick="callPhpScript()">Input Data</button>
-        <form/>
-    </div>    
+    <form id="newForm">
+        <label for="id">ID:</label>
+        <input type="text" id="id" name="id" required><br>
+        <label for="F_name">First Name:</label>
+        <input type="text" id="F_name" name="F_name" required><br>
+        <label for="L_name">Last Name:</label>
+        <input type="text" id="L_name" name="L_name" required><br>
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" required><br>
+        <label for="email2">Email 2:</label>
+        <input type="text" id="email2" name="email2" required><br>
+        <label for="profesi">Profesi:</label>
+        <input type="text" id="profesi" name="profesi" required><br>
+        <input type="button" value="Kirim" onclick="callPhpScript()">
+    </form>
     <table id="data-table"></table>
     <div id="pagination">
       <button id="pagination-prev" onclick="changePage(-1);" style="float: left;">Sebelumnya</button>
