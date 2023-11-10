@@ -11,6 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = "$id, $F_Name, $L_Name, $email, $email2, $profesi\n";
 
     // Simpan data ke dalam file CSV
-    file_put_contents($file, $data, FILE_APPEND | LOCK_EX) ;
+    file_put_contents($file, $data, FILE_APPEND | LOCK_EX);
 }
 ?>
