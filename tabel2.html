@@ -158,31 +158,33 @@
     <div/>
     <div id="add-form">
         <h4>Isi data dirimu!!</h4>
-        <div class="id">
-            <span>Id: </span>
-            <input type="text" id="id"/>
-        </div>
-        <div class="F_Name">
-            <span>F_Name: </span>
-            <input type="text" id="F_Name"/>
-        </div>
-        <div class="L_Name">
-            <span>L_Name: </span>
-            <input type="text" id="L_Name"/>
-        </div>
-        <div class="email">
-            <span>email: </span>
-            <input type="text" id="email"/>
-        </div>
-        <div class="email2">
-            <span>email 2: </span>
-            <input type="text" id="email2"/>
-        </div>
-        <div class="profesi">
-            <span>profesi: </span>
-            <input type="text" id="profesi"/>
-        </div>
-        <button onclick="callPhpScript()">Input Data</button>
+        <form id="myForm">
+            <div class="id">
+                <span>Id: </span>
+                <input type="text" id="id"/>
+            </div>
+            <div class="F_Name">
+                <span>F_Name: </span>
+                <input type="text" id="F_Name"/>
+            </div>
+            <div class="L_Name">
+                <span>L_Name: </span>
+                <input type="text" id="L_Name"/>
+            </div>
+            <div class="email">
+                <span>email: </span>
+                <input type="text" id="email"/>
+            </div>
+            <div class="email2">
+                <span>email 2: </span>
+                <input type="text" id="email2"/>
+            </div>
+            <div class="profesi">
+                <span>profesi: </span>
+                <input type="text" id="profesi"/>
+            </div>
+            <button onclick="callPhpScript()">Input Data</button>
+        <form/>
     </div>    
     <table id="data-table"></table>
     <div id="pagination">
