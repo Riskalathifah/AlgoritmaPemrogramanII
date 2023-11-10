@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Document</title>
+    <title>Praktikum W9</title>
     <style>
     body {
     font-family: Montserrat, sans-serif;
     font-size: 16px;
-    background-color: #E3D6ED; /* Pastel Purple */
+    background-color: #E3D6ED; 
     text-align: center;
     }
 
@@ -14,7 +14,7 @@
     text-align: center;
     font-weight: 800;
     font-size: 36px;
-    color: #825B8C; /* Darker Purple */
+    color: #825B8C; 
     }
 
     label {
@@ -27,7 +27,7 @@
     padding: 12px;
     margin: 10px auto;
     display: block;
-    background-color: #C9B5DD; /* Lighter Pastel Purple */
+    background-color: #C9B5DD; 
     color: #825B8C;
     border-radius: 12px;
     border: 3px solid #825B8C;
@@ -39,7 +39,7 @@
     display: block;
     margin: 0 auto;
     padding: 12px 24px;
-    background-color: #825B8C; /* Darker Purple */
+    background-color: #825B8C; 
     color: #fff;
     border: none;
     cursor: pointer;
@@ -47,21 +47,77 @@
     }
 
     button:hover {
-    background-color: #5B3E5D; /* Even Darker Purple */
+    background-color: #5B3E5D; 
     }
 
+    #add-form {
+    background-color: #C9B5DD; 
+    border-radius: 20px;
+    padding: 20px;
+    margin: 20px;
+    }
+
+    #add-form .id,
+    #add-form .fname,
+    #add-form .lname,
+    #add-form .email,
+    #add-form .email2,
+    #add-form .profesi {
+        margin: 10px 0;
+    }
+
+    #add-form span {
+        font-weight: bold;
+        color: #825B8C; 
+        display: inline-block;
+        width: 120px;
+    }
+
+    #add-form input[type="text"] {
+        width: 80%;
+        padding: 10px;
+        border: 3px solid #825B8C;
+        border-radius: 12px;
+        background-color: #E3D6ED; 
+        color: #825B8C;
+        font-family: Montserrat, sans-serif;
+        font-size: 16px;
+    }
+
+    #add-form button {
+        background-color: #825B8C; 
+        color: #fff;
+        border: none;
+        border-radius: 12px;
+        padding: 12px 24px;
+        cursor: pointer;
+        font-family: Montserrat, sans-serif;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    #add-form button:hover {
+        background-color: #5B3E5D; 
+    }
+    #add-form h4{
+        text-align: center;
+        font-weight: 800;
+        font-size: 20px;
+        color: #825B8C;
+    }
+        
     #table-container .table-controls-right button {
     padding: 10px 20px;
-    background-color: #5B3E5D; /* Darker Purple */
+    background-color: #5B3E5D; 
     color: #fff;
     border: none;
     cursor: pointer;
     border-radius: 10px;
-    margin-left: 10px; /* Add space between the search input and button */
+    margin-left: 10px; 
     }
 
     #table-container .table-controls-right button:hover {
-      background-color: #5B3E5D; /* Even Darker Purple */
+      background-color: #5B3E5D;
     }
 
     table {
@@ -106,10 +162,36 @@
           <button onclick="sortTable(0)">Sort</button>
         </div>
       </div>
-  
-      <table id="data-table"></table>
-    </div>
-  
+    <div/>
+    <div id="add-form">
+        <h4>Isi data dirimu!!</h4>
+        <div class="id">
+            <span>Id: </span>
+            <input type="text" id="ids"/>
+        </div>
+        <div class="fname">
+            <span>F_Name: </span>
+            <input type="text" id="namaDepan"/>
+        </div>
+        <div class="lname">
+            <span>L_Name: </span>
+            <input type="text" id="namaBelakang"/>
+        </div>
+        <div class="email">
+            <span>Email: </span>
+            <input type="text" id="mail"/>
+        </div>
+        <div class="email2">
+            <span>Email 2: </span>
+            <input type="text" id="mail2"/>
+        </div>
+        <div class="profesi">
+            <span>Profesi: </span>
+            <input type="text" id="job"/>
+        </div>
+        <button onclick="callPhpScript()">Input Data</button>
+    </div>    
+    <table id="data-table"></table>
     <div id="pagination">
       <button id="pagination-prev" onclick="changePage(-1);" style="float: left;">Sebelumnya</button>
       <span id="pagination-info" style="display: inline-block; margin: 0 auto;"></span>
@@ -120,20 +202,11 @@
           const urlInput = document.getElementById('text-field').value;
           const tableContainer = document.getElementById('table-container');
           const dataTable = document.getElementById('data-table');
-    
-          // Buat objek AJAX
           const xhr = new XMLHttpRequest();
-          
-          // Atur fungsi penanganan ketika permintaan AJAX selesai
           xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
-              // Konversi JSON yang diterima ke objek JavaScript
               const data = JSON.parse(xhr.responseText);
-    
-              // Hapus semua baris tabel sebelum menambahkan yang baru
               dataTable.innerHTML = '';
-    
-              // Buat header tabel
               const headerRow = document.createElement('tr');
               for (const key in data[0]) {
                 if (data[0].hasOwnProperty(key)) {
@@ -144,7 +217,6 @@
               }
               dataTable.appendChild(headerRow);
     
-              // Tambahkan data ke tabel
               data.forEach(function(item) {
                 const dataRow = document.createElement('tr');
                 for (const key in item) {
@@ -156,38 +228,29 @@
                 }
                 dataTable.appendChild(dataRow);
               });
-    
-              // Tampilkan tabel
               tableContainer.style.display = 'block';
             }
           };
-    
-          // Kirim permintaan GET ke URL yang diinputkan
           xhr.open('GET', urlInput, true);
           xhr.send();
         }
     let currentPage = 1;
-    const entriesPerPage = 10; // Ubah sesuai kebutuhan
+    const entriesPerPage = 25; 
 
     function displayTableData() {
-    // Hitung indeks awal dan akhir data yang akan ditampilkan
         const startIndex = (currentPage - 1) * entriesPerPage;
         const endIndex = startIndex + entriesPerPage;
-    
-    // Ambil tabel dan data
         const dataTable = document.getElementById('data-table');
         const data = Array.from(dataTable.getElementsByTagName('tr'));
 
-    // Sembunyikan semua baris data
         data.forEach(row => {
         row.style.display = 'none';
         });
 
-    // Tampilkan data yang sesuai dengan halaman saat ini
     for (let i = startIndex; i < endIndex && i < data.length; i++) {
       data[i].style.display = '';
+        }
     }
-  }
 
     function updatePagination() {
         const dataTable = document.getElementById('data-table');
@@ -200,8 +263,6 @@
         document.getElementById('pagination-prev').disabled = currentPage === 1;
         document.getElementById('pagination-next').disabled = currentPage === totalPages;
     }
-
-    // Your existing JavaScript code goes here
 
     function sortTable(columnIndex) {
       const dataTable = document.getElementById('data-table');
@@ -244,19 +305,45 @@
         });
     }
 
-        function changePage(offset) {
+    function changePage(offset) {
         currentPage += offset;
         if (currentPage < 1) {
         currentPage = 1;
         }
         displayTableData();
         updatePagination();
-}
-
-  window.onload = () => {
-    displayTableData();
-    updatePagination();
-  }
+    }
+    window.onload = () => {
+        displayTableData();
+        updatePagination();
+    }
+    function callPhpScript() {
+        const id = document.getElementById('ids').value;
+        const F_name = document.getElementById('namaDepan').value;
+        const L_name = document.getElementById('namaBelakang').value;
+        const email = document.getElementById('mail').value;
+        const email2 = document.getElementById('mail2').value;
+        const profesi = document.getElementById('job').value;
+            
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', 'proses.php', true);
+            
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                alert(xhr.responseText);
+            } else {
+                alert('Terjadi kesalahan saat mengirim data.');
+            }
+        };
+        const data = new data2();
+        data.append('id', ids);
+        data.append('F_name', namaDepan);
+        data.append('L_name', namaBelakang);
+        data.append('email', mail);
+        data.append('email2', mail2);
+        data.append('profesi', job);
+        xhr.send(data);
+    }
     </script>
 </body>
 </html>
